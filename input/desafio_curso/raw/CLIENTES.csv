@@ -1,4 +1,4 @@
-Address Number;Business Family;Business Unit;Customer;CustomerKey;Customer Type;Division;Line of Business;Phone;Region Code;Regional Sales Mgr;Search Type
+AddressNumber;BusinessFamily;BusinessUnit;Customer;CustomerKey;CustomerType;Division;LineofBusiness;Phone;RegionCode;RegionalSalesMgr;SearchType
 10000000;R3;1;City Supermarket;10000000;G2;2;   ;816-455-8733;4;S16;C
 10000453;R3;1;A Supermarket;10000453;G1;1;   ;816-455-8733;5;S19;C
 10000455;R3;1;Caribian Supermarket;10000455;G2;2;   ;816-455-8733;1;S16;C
