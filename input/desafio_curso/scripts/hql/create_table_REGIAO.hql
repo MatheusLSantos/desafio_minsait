@@ -1,11 +1,10 @@
-CREATE EXTERNAL TABLE IF NOT EXISTS desafio.categoria ( 
-        id_categoria string,
-        ds_categoria string,
-        perc_parceiro string
+CREATE EXTERNAL TABLE IF NOT EXISTS DESAFIO_CURSO.TBL_REGIAO ( 
+        RegionCode string,
+        RegionName string
     )
-COMMENT 'Tabela de Categoria'
+COMMENT 'Tabela de REGIAO'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '|'
+FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
-location '/datalake/raw/categoria/'
+location '/datalake/raw/REGIAO/'
 TBLPROPERTIES ("skip.header.line.count"="1");

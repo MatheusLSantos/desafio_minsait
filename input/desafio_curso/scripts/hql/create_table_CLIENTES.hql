@@ -1,12 +1,16 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS DESAFIO_CURSO.TBL_CLIENTES ( 
-        Address Number string,
-        Business Family string,
-        Business Unit string,
+        AddressNumber string,
+        BusinessFamily string,
+        BusinessUnit string,
         Customer string,
         CustomerKey string,
-        Customer Type string,
+        CustomerType string,
         Division string,
-        
+        LineofBusiness string,
+        Phone string,
+        RegionCode string,
+        RegionalSalesMgr string,
+        SearchType string
     )
 COMMENT 'Tabela de CLIENTES'
 ROW FORMAT DELIMITED

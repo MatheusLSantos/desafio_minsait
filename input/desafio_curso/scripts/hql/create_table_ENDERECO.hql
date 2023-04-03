@@ -1,11 +1,17 @@
-CREATE EXTERNAL TABLE IF NOT EXISTS desafio.categoria ( 
-        id_categoria string,
-        ds_categoria string,
-        perc_parceiro string
+CREATE EXTERNAL TABLE IF NOT EXISTS DESAFIO_CURSO.TBL_ENDERECO ( 
+        AddressNumber string,
+        City string,
+        Country string,
+        CustomerAddress1 string,
+        CustomerAddress2 string,
+        CustomerAddress3 string,
+        CustomerAddress4 string,
+        State string,
+        ZipCode string
     )
-COMMENT 'Tabela de Categoria'
+COMMENT 'Tabela de ENDERECO'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '|'
+FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
-location '/datalake/raw/categoria/'
+location '/datalake/raw/ENDERECO/'
 TBLPROPERTIES ("skip.header.line.count"="1");

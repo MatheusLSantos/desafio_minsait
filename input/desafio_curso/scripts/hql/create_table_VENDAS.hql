@@ -1,11 +1,29 @@
-CREATE EXTERNAL TABLE IF NOT EXISTS desafio.categoria ( 
-        id_categoria string,
-        ds_categoria string,
-        perc_parceiro string
+CREATE EXTERNAL TABLE IF NOT EXISTS DESAFIO_CURSO.TBL_VENDAS ( 
+        ActualDeliveryDate string,
+        CustomerKey string,
+        DateKey string,
+        DiscountAmount string,
+        InvoiceDate string,
+        InvoiceNumber string,
+        ItemClass string,
+        ItemNumber string,
+        Item string,
+        LineNumber string,
+        ListPrice string,
+        OrderNumber string,
+        PromisedDeliveryDate string,
+        SalesAmount string,
+        SalesAmountBasedonListPrice string,
+        SalesCostAmount string,
+        SalesMarginAmount string,
+        SalesPrice string,
+        SalesQuantity string,
+        SalesRep string,
+        U_M string
     )
-COMMENT 'Tabela de Categoria'
+COMMENT 'Tabela de VENDAS'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '|'
+FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
-location '/datalake/raw/categoria/'
+location '/datalake/raw/VENDAS/'
 TBLPROPERTIES ("skip.header.line.count"="1");
