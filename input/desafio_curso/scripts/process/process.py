@@ -90,12 +90,12 @@ df_contagem = df_stage.select([count(when(col(c).isNull(),c)).alias(c) for c in 
 df_contagem.show(truncate=False)
 
 # criando o fato
-ft_vendas = df_stage.select("discountamount", "item", "itemclass", "itemnumber", "linenumber", "listprice", "ordernumber", "PK_CLIENTES", "PK_LOCALIDADE", "PK_TEMPO", "salesamount", "salesamountbasedonlistprice", "salescostamount", "salesmarginamount", "salesprice", "salesquantity", "salesrep", "u_m")
+ft_vendas = df_stage.select("item", "listprice", "ordernumber", "PK_CLIENTES", "PK_LOCALIDADE", "PK_TEMPO", "salesamount", "salesmarginamount", "salesprice", "salesquantity")
 
 #criando as dimensões
-dim_clientes = df_stage.select("businessfamily", "businessunit", "customer", "customertype", "customerkey", "phone", "PK_CLIENTES")
+dim_clientes = df_stage.select("customer", "customerkey", "phone", "PK_CLIENTES")
 dim_tempo = df_stage.select("actualdeliverydate", "datekey", "invoicedate", "PK_TEMPO", "promiseddeliverydate")
-dim_localidade = df_stage.select("addressnumber", "city", "country", "customeraddress1", "customeraddress2", "customeraddress3", "customeraddress4", "divisionname", "PK_LOCALIDADE", "regioncode", "regionname", "state", "zipcode")
+dim_localidade = df_stage.select("addressnumber", "city", "country", "customeraddress1", "customeraddress2", "customeraddress3", "customeraddress4", "divisionname", "PK_LOCALIDADE", "regionname", "state")
 
 # função para salvar os dados na gold
 def salvar_df(df, file):
