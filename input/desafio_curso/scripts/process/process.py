@@ -45,6 +45,10 @@ def filtrarVaziosENulos(df):
 def salvar_silver(df, file):
     output = "/datalake/silver/" + file
     erase = "hdfs dfs -rm " + output + "/*"
+    rename = "hdfs dfs -get /datalake/silver/"+file+"/part-* /input/desafio_curso/silver/"+file+".csv"
+    print(rename)
+    
+    os.system("rm /input/desafio_curso/silver/"+file+".csv")
     
     os.system(erase) # Limpando pasta datalake/silver no hdfs
     
@@ -55,6 +59,9 @@ def salvar_silver(df, file):
         .option("delimiter", ";")\
         .mode("overwrite")\
         .save("/datalake/silver/"+file+"/")
+    
+    os.system("mkdir /input/desafio_curso/silver/")
+    os.system(rename)
 
 # Espaço para tratar e juntar os campos e a criação do modelo dimensional
 df_clientes = filtrarVaziosENulos(df_clientes)
@@ -104,6 +111,7 @@ def salvar_df(df, file):
     rename = "hdfs dfs -get /datalake/gold/"+file+"/part-* /input/desafio_curso/gold/"+file+".csv"
     print(rename)
     
+    os.system("rm /input/desafio_curso/gold/"+file+".csv")
     os.system(erase)
     
     df.coalesce(1).write\
@@ -112,7 +120,8 @@ def salvar_df(df, file):
         .option("delimiter", ";")\
         .mode("overwrite")\
         .save("/datalake/gold/"+file+"/")
-
+    
+    os.system("mkdir /input/desafio_curso/gold/")
     os.system(rename)
 
 #Salvando fato e dimensões na gold
@@ -120,3 +129,9 @@ salvar_df(ft_vendas, 'FT_VENDAS')
 salvar_df(dim_clientes, 'DIM_CLIENTES')
 salvar_df(dim_tempo, 'DIM_TEMPO')
 salvar_df(dim_localidade, 'DIM_LOCALIDADE')
+
+# Testes
+
+# Quantidade de vendas
+quantidadeVendas = df_stage.select("ordernumber").distinct().count()
+print(quantidadeVendas)
